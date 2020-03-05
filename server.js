@@ -1,6 +1,7 @@
 const express = require('express');
 //Se utiliza esto en vez de import solo por ECMA5, no 6, pero da lo mismo
 const bodyParser = require('body-parser');
+const response = require('./network/response');
 //Sirve para manejar el contenido de los bodys de manera efectiva
 const router = express.Router();
 //Permite separar cabeceras, métodos, URL, etc
@@ -14,18 +15,20 @@ router.get('/message', function (req, res) {
     res.header({
         "custom-header": "Nuestro valor personalizado",
     })
-    res.send('Lista de mensajes');
+    //Así se envían cabeceras personalizadas 
+    response.success(req, res, 'Lista de mensajes');
 });
 
 router.post('/message', function (req, res) {
     console.log(req.body);
     console.log(req.query);
-    res.send(`Mensaje ${req.body.msg} añadido correctamente`);
-});
 
-/*app.use('/', function (req, res) {
-    res.send('Hola');
-}); */
+    if (req.query.error == 'ok') {
+        response.error(req, res, 'Error simulado', 400);
+    } else {
+        response.success(req, res, 'Creado correctamente', 201);
+    }   
+});
 
 app.listen(3000);
 console.log('La app está escuchando en http://localhost:3000');
