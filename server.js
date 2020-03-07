@@ -4,11 +4,11 @@ const bodyParser = require('body-parser');
 
 const router = require('./network/routes');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 
 router(app);
 
 app.listen(PORT);
-console.log('La app está escuchando en http://localhost:3000');
+console.log('La app está escuchando en http://localhost:4000');
