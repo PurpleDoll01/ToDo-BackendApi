@@ -1,13 +1,13 @@
 {
-  "name": "node",
-  "version": "0.1.0",
-  "description": "Chat like Telegram ",
+  "name": "To-do-node",
+  "version": "1.0.0",
+  "description": "API to handle todo-list",
   "main": "server.js",
   "scripts": {
   },
   "keywords": [
-    "chat",
-    "telegram",
+    "CRUD",
+    "API",
     "server"
   ],
   "author": "PurpleDoll",

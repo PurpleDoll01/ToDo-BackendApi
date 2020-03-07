@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const mySchema = new Schema({
-    user: String,
-    message: {
+    checked: Boolean,
+    text: {
         type: String,
         required: true,
     },
-    date: Date,
+    notes: String,
 })
 
 const model = mongoose.model('Message', mySchema);

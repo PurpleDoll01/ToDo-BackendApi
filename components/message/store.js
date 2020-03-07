@@ -3,12 +3,11 @@ const Model = require('./model');
 
 const list = [];
 
-//mongodb+srv://PurpleDoll:Thestral01@messagecluster-vslg9.mongodb.net/test
 db.Promise = global.Promise;
-db.connect('mongodb+srv://PurpleDoll:Thestral01@messagecluster-vslg9.mongodb.net/test?retryWrites=true&w=majority', {
+db.connect('mongodb+srv://PurpleDoll:1234567890@to-do-ows7q.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName: 'db_message'
+    dbName: 'todo_db'
 });
 db.connection.on('connected', () => {
     console.log('Mongoose is connecteeed');
@@ -31,14 +30,14 @@ async function getMessages(filterUser) {
     return messages;
 }
 
-async function updateText(id, message) {
-    const foundMessage = await Model.findOne({
+async function updateText(id, checked) {
+    const foundChecked = await Model.findOne({
         _id: id
     });
 
-    foundMessage.message = message;
-    const newMessage = await foundMessage.save();
-    return newMessage;
+    foundChecked.checked = checked;
+    const newChecked = await foundChecked.save();
+    return newChecked;
 } 
 
 function removeMessage(id) {

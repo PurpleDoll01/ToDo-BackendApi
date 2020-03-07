@@ -1,15 +1,15 @@
 const store = require('./store');
 
-function addMessage(user, message) {
+function addMessage(text) {
     return new Promise((resolve, reject) => {
-        if (!user || !message) {
+        if (!text) {
             console.error('[messageController] No hay usuario o mensaje')
             return reject('Los datos son incorrectos');
         }
         const fullMessage = {
-            user: user,
-            message: message,
-            date: new Date()
+            text: text,
+            notes: '',
+            checked: false,
         };
     
         store.add(fullMessage);
@@ -24,13 +24,13 @@ function getMessages(filterUser) {
     });
 }
 
-function updateMessage(id, message) {
+function updateMessage(id, checked) {
     return new Promise(async (resolve, reject) => {
-        if (!id || !message) {
+        if (!id || !checked) {
             reject('Invalid data');
             return false;
         }
-        const result = await store.updateText(id, message);
+        const result = await store.updateText(id, checked);
         resolve(result);
     });
 }
