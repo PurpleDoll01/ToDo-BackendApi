@@ -18,15 +18,15 @@ function addMessage(text) {
     
 }
 
-function getMessages(id) {
+function getMessages(filterUser) {
     return new Promise((resolve, reject) => {
         resolve(store.list(filterUser));
     });
 }
 
-function getMessage() {
+function getMessage(id) {
     return new Promise((resolve, reject) => {
-        resolve(store.listOne());
+        resolve(store.listOne(id));
     });
 }
 
