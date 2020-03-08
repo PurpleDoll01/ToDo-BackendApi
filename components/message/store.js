@@ -35,8 +35,14 @@ async function updateText(id, checked, notes) {
         _id: id
     });
 
-    foundChecked.checked = checked;
-    foundChecked.notes = notes;
+    if (checked) {
+        foundChecked.checked = checked;
+    }
+
+    if (notes) {
+        foundChecked.notes = notes;
+    }
+   
     const newChecked = await foundChecked.save();
     return newChecked;
 } 
