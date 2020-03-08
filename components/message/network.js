@@ -7,7 +7,7 @@ const router = express.Router();
 //Permite separar cabeceras, métodos, URL, etc
 
 router.get('/', function (req, res) {
-    const filterMessages = req.query.user || null;
+    const filterMessages = req.query._id || null;
     controller.getMessages(filterMessages)
         .then((messageList) => {
             response.success(req, res, messageList, 200);

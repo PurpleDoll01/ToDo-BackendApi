@@ -22,7 +22,7 @@ async function getMessages(filterUser) {
     let filter = {};
     if (filterUser !== null) {
         filter = {
-            user: filterUser
+            _id: filterUser
         };
     }
     //Aquí se está filtrando para que traiga los user
