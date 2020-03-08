@@ -30,12 +30,13 @@ async function getMessages(filterUser) {
     return messages;
 }
 
-async function updateText(id, checked) {
+async function updateText(id, checked, notes) {
     const foundChecked = await Model.findOne({
         _id: id
     });
 
     foundChecked.checked = checked;
+    foundChecked.notes = notes;
     const newChecked = await foundChecked.save();
     return newChecked;
 } 

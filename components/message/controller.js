@@ -24,13 +24,13 @@ function getMessages(filterUser) {
     });
 }
 
-function updateMessage(id, checked) {
+function updateMessage(id, checked, notes) {
     return new Promise(async (resolve, reject) => {
-        if (!id || !checked) {
+        if (!id) {
             reject('Invalid data');
             return false;
         }
-        const result = await store.updateText(id, checked);
+        const result = await store.updateText(id, checked, notes);
         resolve(result);
     });
 }
