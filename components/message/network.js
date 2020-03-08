@@ -17,6 +17,16 @@ router.get('/', function (req, res) {
         });
 });
 
+router.get('/:id', function (req, res) {
+    controller.getMessage(req.params.id)
+        .then((messageList) => {
+            response.success(req, res, messageList, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Unexpected Error', 500, e);
+        });
+});
+
 router.post('/', function (req, res) {
     controller.addMessage(req.body.text)
         .then((fullMessage) => {

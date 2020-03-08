@@ -18,9 +18,15 @@ function addMessage(text) {
     
 }
 
-function getMessages(filterUser) {
+function getMessages(id) {
     return new Promise((resolve, reject) => {
         resolve(store.list(filterUser));
+    });
+}
+
+function getMessage() {
+    return new Promise((resolve, reject) => {
+        resolve(store.listOne());
     });
 }
 
@@ -55,5 +61,6 @@ module.exports = {
     addMessage,
     getMessages,
     updateMessage,
-    deleteMessage
+    deleteMessage,
+    getMessage
 };

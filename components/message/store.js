@@ -30,6 +30,13 @@ async function getMessages(filterUser) {
     return messages;
 }
 
+async function getMessage(id) {
+    const detailsTask = await Model.findOne({
+        _id: id
+    });
+    return detailsTask;
+}
+
 async function updateText(id, checked, notes) {
     const foundChecked = await Model.findOne({
         _id: id
@@ -56,6 +63,7 @@ function removeMessage(id) {
 module.exports = {
     add: addMessage,
     list: getMessages,
+    listOne: getMessage,
     updateText: updateText,
     remove: removeMessage
 }
