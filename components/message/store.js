@@ -25,7 +25,6 @@ async function getMessages(filterUser) {
             _id: filterUser
         };
     }
-    //Aquí se está filtrando para que traiga los user
     const messages = await Model.find(filter);
     return messages;
 }
